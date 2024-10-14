@@ -12,6 +12,29 @@ npm install --save-dev eslint-plugin-no-lookahead-lookbehind-regexp
 
 ## 2. Add plugin to your ESlint configuration
 
+#### `eslint.config.js`
+
+```diff
++import noLookaheadLookbehind from "eslint-plugin-no-lookahead-lookbehind-regexp";
+
+export default [
++  noLookaheadLookbehind.flatConfigs.recommended,
+];
+```
+
+```diff
++import noLookaheadLookbehind from "eslint-plugin-no-lookahead-lookbehind-regexp";
+
+export default [
+  {
++    plugin: noLookaheadLookbehind,
+    rules: {
++      "no-lookahead-lookbehind-regexp": ["error", "no-lookbehind"]
+    }
+  }
+];
+```
+
 #### `.eslintrc.json`
 
 ```diff
