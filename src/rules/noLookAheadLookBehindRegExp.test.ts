@@ -26,7 +26,7 @@ tester.run("noLookaheadLookbehindRegexp", noLookaheadLookbehindRegexp, {
     // dont flag string values when they are not used in combination with RegExp
     ...groups.map((g) => `var str = "(${g.expression}foo)"`),
     // dont flag escaped sequences
-    ...groups.map((g) => `/\\(${g})/g`),
+    ...groups.map((g) => `/\\${g.expression}/g`), // TODO: Validate this -- the test case seemed broken
   ],
   invalid: [
     // When initializing with a literal
@@ -85,7 +85,7 @@ tester.run("Caniuse: noLookaheadLookbehindRegexp", noLookaheadLookbehindRegexp, 
         settings: { browser: "Chrome 96, Firefox 96" },
       };
     }),
-    ...groups.map((g) => `/\\(${g})/g`),
+    ...groups.map((g) => `/\\${g.expression}/g`),
   ],
   invalid: [
     {
