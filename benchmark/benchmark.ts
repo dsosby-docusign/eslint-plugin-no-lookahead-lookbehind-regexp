@@ -1,5 +1,6 @@
 import Benchmark from "benchmark";
 import { ESLint } from "eslint";
+import tsParser from "@typescript-eslint/parser";
 import fs from "fs";
 
 // Save the contents of our old pkg json to a variable
@@ -8,14 +9,11 @@ process.on("uncaughtException", () => {
   fs.writeFileSync("./package.json", JSON.stringify({ ...packageJSON }, undefined, 2));
 });
 
-const config = {
+const config: ESLint.Options = {
   baseConfig: {
-    root: true,
-    parser: "@typescript-eslint/parser",
-    extends: ["plugin:eslint-plugin/recommended", "plugin:prettier/recommended"],
-    env: {
-      browser: true,
-    },
+    languageOptions: {
+      parser: tsParser,
+    }
   },
 };
 
