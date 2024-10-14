@@ -1,5 +1,9 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+const { createJsWithTsPreset } = require("ts-jest");
+
+/** @type {import('ts-jest').JestConfigWithTsJest} **/
 module.exports = {
-  preset: "ts-jest",
   testEnvironment: "node",
+  transform: {
+    ...createJsWithTsPreset ().transform,
+  },
 };
