@@ -73,6 +73,15 @@ const noLookaheadLookbehindRegexp: Rule.RuleModule = {
       recommended: true,
     },
     type: "problem",
+    schema: {
+      type: "array",
+      items: {
+        oneOf: [
+          { enum: ["no-lookahead", "no-lookbehind", "no-negative-lookahead", "no-negative-lookbehind"] },
+          { type: "object", properties: { browserslist: { type: "boolean" } } },
+        ]
+      }
+    },
   },
   create(context: Rule.RuleContext) {
     const browsers = context.settings.browsers || context.settings.targets;
