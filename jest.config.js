@@ -6,4 +6,5 @@ module.exports = {
   transform: {
     ...createJsWithTsPreset().transform,
   },
+  moduleDirectories: ["node_modules", "src"],
 };
